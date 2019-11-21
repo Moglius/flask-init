@@ -5,13 +5,19 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 from dotenv import load_dotenv
 
+from flask_admin import Admin
 from app import blueprint
 from app.main import create_app, db
-from app.main.model import user, blacklist
+
+from app.main.admin_views import *
 
 load_dotenv()
 
 app = create_app(os.getenv('FLASK_ENV') or 'development')
+
+admin = Admin(app, name='FLASK', template_mode='bootstrap3')
+create_views(admin)
+
 app.register_blueprint(blueprint)
 
 app.app_context().push()

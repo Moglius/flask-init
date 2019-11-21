@@ -5,7 +5,6 @@ from app.main.model.blacklist import BlacklistToken
 from ..config import key
 import jwt
 
-
 class User(db.Model):
     """ User Model for storing user related details """
     __tablename__ = "user"
@@ -70,3 +69,4 @@ class User(db.Model):
 
     def __repr__(self):
         return "<User '{}'>".format(self.username)
+
